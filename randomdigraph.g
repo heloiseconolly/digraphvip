@@ -1,4 +1,4 @@
-RandomDigraph := function(_, n, p, rs)
+RandomDigraph := function(_, rs, n, p)
 	local adj, n, p;
 
 #Checking if p is a valid probability
@@ -15,7 +15,7 @@ RandomDigraph := function(_, n, p, rs)
 
 	for i  in [1...n] do 
 	   for j in [1...n] do
-		q := Float(Random(rs, 0, 2 ^ 52 - 1)) / Float(2 ^ 52);
+		q := Float(Random(rs, 0, 2 ^ 52 - 1 + n ^ 2)) / Float(2 ^ 52); #we think adding n^2 will create fine enough resolution for graphs of any reasonable size
 		if q < p then
 		   Add(adj[i], j);
 		fi;
